@@ -1,0 +1,1 @@
+import { obtenerProveedores } from "../services/mysqlService"
