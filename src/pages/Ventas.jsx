@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { guardarVenta, pruebaConexion } from "../services/supabaseService";
+
 
 function Ventas(){
 
