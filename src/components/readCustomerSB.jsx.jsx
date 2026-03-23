@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
-import { getCustomers } from "../crud/customer_Supabase";
+import { deleteCustomer } from "../crud/customer_Supabase";
 
-const ReadCustomer = () => {
+const ReadCustomer = ({ customers, recargar, setClienteEditar }) => {
+const eliminarCliente = async (id) => {
 
-const [customers,setCustomers] = useState([]);
 
-useEffect(()=>{
+await deleteCustomer(id)
 
-const cargarClientes = async ()=>{
-const data = await getCustomers();
-setCustomers(data);
+recargar()
+
 }
-
-cargarClientes();
-
-},[])
 
 return(
 
@@ -30,13 +24,14 @@ return(
 <th>Empresa</th>
 <th>Nombre</th>
 <th>Ciudad</th>
-<th>Pais</th>
+<th>País</th>
+<th>Acciones</th>
 </tr>
 </thead>
+
 <tbody>
 
-{customers?.map((c) => (
-
+{customers?.map((c)=>(
 <tr key={c.customer_id}>
 
 <td>{c.customer_id}</td>
@@ -45,11 +40,25 @@ return(
 <td>{c.city}</td>
 <td>{c.country}</td>
 
-</tr>
+<td>
+  <div className="actions">
+    <button 
+  className="edit"
+  onClick={() => setClienteEditar(c)}
+>
+  Editar
+</button>
+    <button className="delete" onClick={() => eliminarCliente(c.customer_id)}>
+      Eliminar
+    </button>
+  </div>
+</td>
 
+</tr>
 ))}
 
 </tbody>
+
 </table>
 
 </div>

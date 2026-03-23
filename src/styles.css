@@ -1,186 +1,148 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
 }
 
-/* BODY */
-
-body{
-background:#f1f5f9;
-color:#1f2937;
+/* CONTENEDOR */
+.container {
+  padding: 30px;
 }
 
-/* LAYOUT */
-
-.layout{
-display:flex;
-min-height:100vh;
+/* TITULO */
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-/* SIDEBAR */
-
-.sidebar{
-width:240px;
-background:linear-gradient(180deg,#1e3a8a,#1e40af);
-color:white;
-padding:25px;
-display:flex;
-flex-direction:column;
+/* TARJETAS */
+.card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.logo{
-font-size:22px;
-margin-bottom:35px;
-text-align:center;
-font-weight:bold;
-letter-spacing:1px;
-}
-
-/* LINKS */
-
-.nav-link{
-display:block;
-color:white;
-text-decoration:none;
-margin-bottom:12px;
-padding:12px 14px;
-border-radius:8px;
-transition:all .2s ease;
-font-weight:500;
-}
-
-.nav-link:hover{
-background:#2563eb;
-padding-left:18px;
-}
-
-/* LINK ACTIVO */
-
-.nav-link.active{
-background:#2563eb;
-font-weight:bold;
-}
-
-/* CONTENIDO */
-
-.content{
-flex:1;
-padding:40px;
-color:#1f2937;
-}
-
-/* TITULOS */
-
-h1{
-margin-bottom:20px;
-color:#1e3a8a;
-}
-
-/* FORMULARIOS */
-
-.form{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-
-.form input{
-padding:10px;
-border:1px solid #cbd5e1;
-border-radius:6px;
-outline:none;
-color:#1f2937;
-background:white;
-}
-
-.form input:focus{
-border-color:#2563eb;
+/* INPUTS */
+input {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 /* BOTONES */
-
-button{
-background:#2563eb;
-color:white;
-border:none;
-padding:10px 18px;
-border-radius:6px;
-cursor:pointer;
-font-weight:500;
-transition:.2s;
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
 }
 
-button:hover{
-background:#1d4ed8;
-transform:scale(1.03);
+/* BOTON PRINCIPAL */
+button.primary {
+  background-color: #2563eb;
+  color: white;
 }
 
-/* TABLAS */
-
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 4px 15px rgba(0,0,0,0.08);
-color:#1f2937;
+/* BOTON EDITAR */
+button.edit {
+  background-color: #f59e0b;
+  color: white;
 }
 
-thead{
-background:#2563eb;
-color:white;
+/* BOTON ELIMINAR */
+button.delete {
+  background-color: #ef4444;
+  color: white;
 }
 
-th,td{
-padding:12px;
-text-align:center;
+/* TABLA */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-tbody tr:nth-child(even){
-background:#f8fafc;
+/* ENCABEZADO */
+thead {
+  background-color: #2563eb;
+  color: white;
 }
 
-tbody tr:hover{
-background:#e2e8f0;
+th, td {
+  padding: 12px;
+  text-align: left;
 }
 
-/* CARDS */
-
-.cards{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
+/* FILAS */
+tbody tr {
+  border-bottom: 1px solid #eee;
 }
 
-.card{
-flex:1;
-min-width:200px;
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 4px 15px rgba(0,0,0,0.08);
-text-align:center;
-transition:.2s;
-color:#1f2937;
+tbody tr:hover {
+  background-color: #f9fafb;
 }
 
-.card:hover{
-transform:translateY(-3px);
+/* ACCIONES */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+/* FONDO OSCURO */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card h2{
-color:#2563eb;
-font-size:32px;
-margin-top:10px;
+/* CAJA DEL MODAL */
+.modal {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
 }
 
-/* STOCK BAJO */
+/* ANIMACION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-.stock-bajo{
-color:#dc2626;
-font-weight:bold;
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
 }
