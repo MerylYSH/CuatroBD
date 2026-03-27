@@ -1,128 +1,76 @@
+/* =========================================
+   VARIABLES GLOBALES (Inspiradas en MUI)
+   ========================================= */
+:root {
+  --primary: #1976d2;
+  /* Azul MUI */
+  --primary-hover: #1565c0;
+  --warning: #ed6c02;
+  /* Naranja MUI */
+  --danger: #d32f2f;
+  /* Rojo MUI */
+  --bg-body: #f4f6f9;
+  --bg-surface: #ffffff;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --border-color: #e0e0e0;
+}
+
+/* =========================================
+   RESETEO Y LAYOUT PRINCIPAL
+   ========================================= */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f6f9;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  /* Roboto es la fuente oficial de MUI */
+  background-color: var(--bg-body);
+  color: var(--text-main);
   margin: 0;
+  padding: 0;
 }
 
-/* CONTENEDOR */
-.container {
+/* Clases clave para que el Navbar lateral funcione */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
   padding: 30px;
+  overflow-y: auto;
 }
 
-/* TITULO */
+/* =========================================
+   TIPOGRAFÍA Y CONTENEDORES
+   ========================================= */
 .title {
   font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: var(--text-main);
 }
 
-/* TARJETAS */
 .card {
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 25px;
+  background: var(--bg-surface);
+  padding: 24px;
+  margin-bottom: 24px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
 }
 
-/* INPUTS */
-input {
-  padding: 10px;
-  margin-right: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* BOTONES */
-button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-/* BOTON PRINCIPAL */
-button.primary {
-  background-color: #2563eb;
-  color: white;
-}
-
-/* BOTON EDITAR */
-button.edit {
-  background-color: #f59e0b;
-  color: white;
-}
-
-/* BOTON ELIMINAR */
-button.delete {
-  background-color: #ef4444;
-  color: white;
-}
-
-/* TABLA */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-/* ENCABEZADO */
-thead {
-  background-color: #2563eb;
-  color: white;
-}
-
-th, td {
-  padding: 12px;
-  text-align: left;
-}
-
-/* FILAS */
-tbody tr {
-  border-bottom: 1px solid #eee;
-}
-
-tbody tr:hover {
-  background-color: #f9fafb;
-}
-
-/* ACCIONES */
-.actions {
-  display: flex;
-  gap: 10px;
-}
-/* FONDO OSCURO */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* CAJA DEL MODAL */
-.modal {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 400px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  animation: fadeIn 0.3s ease;
-}
-
-/* ANIMACION */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
+/* =========================================
+   FORMULARIOS (Inputs y Labels)
+   ========================================= */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .form-group {
@@ -132,17 +80,153 @@ tbody tr:hover {
 
 .form-group label {
   font-size: 14px;
-  margin-bottom: 4px;
-  color: #555;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-muted);
 }
 
-.form-group input {
-  padding: 10px;
+input {
+  padding: 10px 14px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
+  font-family: inherit;
+  transition: all 0.2s ease;
 }
 
-.form-group input:focus {
+input:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button.primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+button.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+button.edit {
+  background-color: var(--warning);
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #e65100;
+}
+
+button.delete {
+  background-color: var(--danger);
+  color: white;
+}
+
+button.delete:hover {
+  background-color: #c62828;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* =========================================
+   TABLAS
+   ========================================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-surface);
+  border-radius: 8px;
+  overflow: hidden;
+  /* Para que los bordes redondeados se apliquen al thead */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: var(--primary);
+  color: white;
+}
+
+th {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* =========================================
+   MODALES
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  /* Efecto de desenfoque moderno */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--bg-surface);
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Animación más natural */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
